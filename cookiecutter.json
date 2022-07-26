@@ -1,0 +1,6 @@
+{
+  "project_name": "Basic Django Project",
+  "project_slug": "{{ cookiecutter.project_name.lower()|replace(' ', '_')|replace('-', '_')|replace('.', '_')|trim() }}",
+  "description": "This includes basic django applications!",
+  "author_name": "First and Last Name"
+}
