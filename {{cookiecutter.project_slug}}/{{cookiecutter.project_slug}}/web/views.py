@@ -100,7 +100,6 @@ class CreateUser(LoginRequiredMixin, View):
 class UpdateView(LoginRequiredMixin, UpdateView):
     def get(self,request, *args, **kwargs):
         post = UserProfile.objects.get(id=kwargs.get('post_id'))
-        print(post)
         userform = CreateUserForm(instance=post.user)
         profileform = CreateProfileForm(instance=post)
         
