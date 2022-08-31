@@ -1,4 +1,3 @@
-{% raw %}
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
@@ -15,31 +14,48 @@
     <!-- navbar section -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="{% url "index" %}">{% endraw %}{{cookiecutter.project_slug}}{% raw %}</a>
+            <a class="navbar-brand" href="{% url "index" %}">User Management</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
               {% if request.user.is_authenticated %}
                 <ul class="navbar-nav">
-                  <li class="nav-item active">
-                    <a class="nav-link" href="{% url "index" %}">Users</a>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Users
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item"  href="{% url "index" %}" >Users</a></li>
+                      <li><a class="dropdown-item"  href="{% url 'viewuser' %}" >User Hierarchy</a></li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul class="navbar-nav">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Roles
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item"  href="{% url "managerole" %}">Roles</a></li>
+                      <li><a class="dropdown-item"  href="{% url "viewrole" %}" >Role Hierarchy</a></li>
+                    </ul>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{% url "managerole" %}">Roles</a>
+                    <a class="nav-link"  href="{% url 'managerole' %}" >Role Management</a>
                   </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
-                  <li class="nav-item">
-                    <b>
-                      <a class="nav-link"> {{request.user|capfirst}}</a>
-                    </b>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-item nav-link" href="{% url 'password_change' %}">Change Password</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url "logout" %}">Logout</a>
+
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <b>{{request.user|capfirst}}</b>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                    </ul>
                   </li>
                 </ul>
               {% endif %}              
@@ -61,4 +77,3 @@
     <!-- javascript section end -->
 
 </body>
-{% endraw %}
