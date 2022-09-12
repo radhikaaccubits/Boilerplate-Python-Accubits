@@ -42,10 +42,19 @@ class CreateProfileForm(forms.ModelForm):
         self.fields['manager'].required = False
         self.fields['parent'].required = False
         if 'role' in self.data:
+            
+
             manager_id = self.data.get('role')
+            
             parent_role = Roles.objects.filter(id=manager_id).values('parent_id')
+            print(parent_role)
+            print(UserProfile.objects.filter(role_id__in=parent_role).values('user__first_name'))
+            print(UserProfile.objects.filter(role_id__in=parent_role).values('user_id'))
             a = UserProfile.objects.filter(role_id__in=parent_role,user__is_active=True).values('user_id')
             self.fields['manager'].queryset = User.objects.filter(id__in=a,is_active=True)
+            
+            print(User.objects.filter(id__in=a))
+
 
 class CreateUserForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
