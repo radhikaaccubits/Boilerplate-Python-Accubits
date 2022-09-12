@@ -46,9 +46,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "rest_framework_simplejwt",
     'crispy_forms',
     'web',
     'mptt',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -61,7 +63,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "{{cookiecutter.project_slug}}.urls"
+ROOT_URLCONF = "core.urls"
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -81,7 +83,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "{{cookiecutter.project_slug}}.wsgi.application"
+WSGI_APPLICATION = "core.wsgi.application"
 
 
 # Database
