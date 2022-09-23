@@ -1,0 +1,11 @@
+{% raw %}
+<option value="">---------</option>
+{%if users%}
+{%for j in users%}
+
+
+<option value={{ j.id }}>{{ j.first_name }} {{ j.last_name }}</option>
+
+{% endfor %}
+{%endif%}
+{% endraw %}
